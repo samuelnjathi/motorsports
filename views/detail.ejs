@@ -1,0 +1,74 @@
+<%- include("partials/head") %>
+<%- include("partials/header") %>
+<div class="container pt-5 py-5 mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Images Album -->
+        <div class="ecommerce-gallery" data-mdb-ecommerce-gallery-init data-mdb-zoom-effect="true" data-mdb-auto-height="true">
+          <div class="row py-3 shadow-5">
+            <div class="col-12 mb-1">
+              <div class="lightbox" data-mdb-lightbox-init>
+                <img
+                  src="<%= carPhotos[0].replace("/public", "") %>"
+                  alt="Gallery image 1"
+                  class="ecommerce-gallery-main-img active w-100"
+                  id="mainDisplay"
+                />
+              </div>
+            </div>
+              <% carPhotos.forEach(photo => { %>
+                <div class="col-3 mt-1 thumbnail">
+                  <img
+                    src="<%= photo.replace("/public", "") %>"
+                    alt="Gallery image 4"
+                    class="w-100"
+                  />
+                </div>
+              <% }); %>
+          </div>
+        </div>
+      </div>
+      <!--------------------------- Car Details ---------------->
+      <div class="col-md-6">
+        <h1><%= car.make %> <%= car.model %></h1>
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                  <th>Price</th>
+                  <td><%= car.price %></td>
+                </tr>
+              <tr>
+                <th>Year of Manufacture</th>
+                <td><%= car.yom %></td>
+              </tr>
+              <tr>
+                <th>Transmission</th>
+                <td><%= car.transmission %></td>
+              </tr>
+              <tr>
+                <th>Rating(CC)</th>
+                <td><%= car.rating %></td>
+              </tr>
+              <tr>
+                <th>Colour</th>
+                <td><%= car.color %></td>
+              </tr>
+              <tr>
+                <th>Fuel Type</th>
+                <td><%= car.fuel %></td>
+              </tr>
+              <tr>
+                <th>Location</th>
+                <td><%= car.location %></td>
+              </tr>
+              <tr>
+                <th>Torque</th>
+                <td><%= car.torque %></td>
+              </tr>
+            </tbody>
+          </table>  
+      </div>
+    </div>
+  </div>
+<%- include("partials/footer") %>
+

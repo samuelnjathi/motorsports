@@ -1,0 +1,164 @@
+<%- include("partials/head") %>
+<%- include("partials/adminHeader") %>
+<div class="container pt-5 py-5 mt-5">
+    <h2><%= heading %></h2>
+    <% if (locals.car) { %>
+        <form action="/ourcars/edit/<%= car.id %>" enctype="multipart/form-data" method="post" autocomplete="off">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="make" class="form-label"><b>Make</b></label>
+                    <input type="text" class="form-control" name="make" value="<%= car.make %>">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputModel" class="form-label"><b>Model</b></label>
+                    <input type="text" class="form-control" name="model" value="<%= car.model %>">
+                </div>
+                <div class="col-md-6 mt-1">
+                    <label for="year" class="form-label"><b>Year of Manufacture</b></label>
+                    <input type="number" class="form-control" name="yom" value="<%= car.yom %>">
+                </div>
+                <div class="col-md-6 mt-1">
+                    <label for="rating" class="form-label"><b>Rating(CC)</b></label>
+                    <input type="number" class="form-control" name="rating" value="<%= car.rating %>">
+                </div>
+                <div class="col-md-6 mt-1">
+                    <label for="inputFuel" class="form-label"><b>Fuel Type</b></label>
+                    <select id="fuelType" class="form-select" name="fuel">
+                        <option>Select Fuel Type</option>
+                        <option>Diesel</option>
+                        <option>Petrol</option>
+                      </select>
+                </div>
+                <div class="col-md-6 mt-1">
+                    <label for="inputState" class="form-label"><b>Transmission</b></label>
+                    <select id="inputState" class="form-select" name="transmission">
+                        <option>Select Transmission</option>
+                        <option>Automatic</option>
+                        <option>Manual</option>
+                      </select>
+                </div>
+                <div class="col-md-6 mt-1">
+                    <label for="inputFuel" class="form-label"><b>Colour</b></label>
+                    <input type="text" class="form-control" name="color" value="<%= car.color %>">
+                </div>
+                <div class="col-md-6 mt-1">
+                    <label for="inputAddress" class="form-label"><b>Location</b></label>
+                    <input type="address" class="form-control" name="location" value="<%= car.location %>">
+                </div>
+                <div class="col-md-6 mt-1">
+                    <label for="inputPrice" class="form-label"><b>Price</b></label>
+                    <div class="input-group ">
+                        <span class="input-group-text">Ksh</span>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest Ksh)" name="price" value="<%= car.price %>">
+                        <span class="input-group-text">.00</span>
+                      </div>
+                </div>
+                <div class="col-md-6 mt-1">
+                    <label for="inputAddress" class="form-label"><b>Torque</b></label>
+                    <input type="text" class="form-control" name="torque" value="<%= car.torque %>">
+                </div>
+                <div class="d-grid gap-2  mx-auto mt-3">
+                    <button class="btn btn-outline-warning" type="submit"><%= submit %></button>
+                </div>
+            </div>
+        </form>  
+        <% } else { %>
+        <form action="/new" enctype="multipart/form-data" method="post" autocomplete="off">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="make" class="form-label"><b>Make</b></label>
+                <input type="text" class="form-control" name="make">
+            </div>
+            <div class="col-md-6">
+                <label for="inputModel" class="form-label"><b>Model</b></label>
+                <input type="text" class="form-control" name="model">
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="year" class="form-label"><b>Year of Manufacture</b></label>
+                <input type="number" class="form-control" name="yom">
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="rating" class="form-label"><b>Rating(CC)</b></label>
+                <input type="number" class="form-control" name="rating">
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="inputFuel" class="form-label"><b>Fuel Type</b></label>
+                <select id="fuelType" class="form-select" name="fuel">
+                    <option>Select Fuel Type</option>
+                    <option>Diesel</option>
+                    <option>Petrol</option>
+                  </select>
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="inputState" class="form-label"><b>Transmission</b></label>
+                <select id="inputState" class="form-select" name="transmission">
+                    <option>Select Transmission</option>
+                    <option>Automatic</option>
+                    <option>Manual</option>
+                  </select>
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="inputFuel" class="form-label"><b>Colour</b></label>
+                <input type="text" class="form-control" name="color">
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="inputAddress" class="form-label"><b>Location</b></label>
+                <input type="address" class="form-control" name="location">
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="inputPrice" class="form-label"><b>Price</b></label>
+                <div class="input-group ">
+                    <span class="input-group-text">Ksh</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest Ksh)" name="price">
+                    <span class="input-group-text">.00</span>
+                  </div>
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="inputAddress" class="form-label"><b>Torque</b></label>
+                <input type="text" class="form-control" name="torque">
+            </div>
+            
+            <div class="mt-3">
+                <h3>Upload Photos</h3>
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="inputPhoto1" class="form-label"><b>Front</b></label>
+                <input type="file" class="form-control" name="photos">
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="inputPhoto2" class="form-label"><b>Rear</b></label>
+                <input type="file" class="form-control" name="photos">
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="inputPhoto3" class="form-label"><b>Right Side</b></label>
+                <input type="file" class="form-control" name="photos">
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="inputPhoto4" class="form-label"><b>Left Side</b></label>
+                <input type="file" class="form-control" name="photos">
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="inputPhoto5" class="form-label"><b>Inside 1</b></label>
+                <input type="file" class="form-control" name="photos">
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="inputPhoto6" class="form-label"><b>Inside 2</b></label>
+                <input type="file" class="form-control" name="photos">
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="inputPhoto7" class="form-label"><b>Dashboard/Odometer</b></label>
+                <input type="file" class="form-control" name="photos">
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="inputPhoto8" class="form-label"><b>Engine</b></label>
+                <input type="file" class="form-control" name="photos">
+            </div>
+            
+            <div class="d-grid gap-2  mx-auto mt-3">
+                <button class="btn btn-outline-warning" type="submit"><%= submit %></button>
+            </div>
+        </div>
+        </form>
+    <% }  %>
+</div>
+<%- include("partials/footer") %>

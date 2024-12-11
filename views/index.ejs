@@ -1,0 +1,157 @@
+<%- include("partials/head") %>
+<%- include("partials/nav") %>
+<%- include("partials/header") %>
+
+    <!-- Carousel -->
+    <div id="demo" class="carousel slide carousel-fade mt-0" data-bs-ride="carousel">
+
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+        </div>
+      
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./assets/images/carousel.jpg" alt="carousel" height="450" width="100%">
+          </div>
+          <div class="carousel-item">
+            <img src="./assets/images/collection.jpeg" alt="collection" height="450" width="100%">
+          </div>
+          <div class="carousel-item">
+            <img src="./assets/images/pegeout.jpeg" alt="pegeout" height="450" width="100%">
+          </div>
+        </div>
+      
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    <!---------------------------- Search Bar--------------------------------->
+      <div class="container py-5">
+        <h2>Search Car</h2>
+        <form>
+          <div class="row g-3">
+          <div class="col-md-6">
+            <label for="inputMake" class="form-label">Make</label> 
+            <input type="text" class="form-control" id="inputMake"> 
+          </div> 
+          <div class="col-md-6"> 
+            <label for="inputModel" class="form-label">Model</label>
+              <input type="text" class="form-control" id="inputModel"> 
+          </div>
+        </div>
+          <div class="row">
+            
+          <div class="col-md-3">
+            <label for="inputMinYear" class="form-label">Year of Manufacture</label> 
+            <input type="text" class="form-control" id="inputModel" placeholder="Min year"> 
+            
+          </div>
+          <div class="col-md-3"> 
+            <label for="inputMaxYear" class="form-label"> .</label>
+            <input type="text" class="form-control" id="inputModel" placeholder="Max year"> 
+          </div> 
+    
+          <div class="col-md-6 mt-2">
+            <label for="customRange" class="form-label">Price range</label>
+            <input type="range" class="form-range data-mdb-multi-range-slider-init" id="customRange" name="points" min="0" max="100">
+           
+          </div>
+          
+          
+          <div class="col-md-3"> 
+            <label for="inputMinYear" class="form-label">Price</label>
+            <input type="text" class="form-control" id="inputModel" placeholder="Min Price">  
+          </div> 
+          <div class="col-md-3"> 
+            <label for="inputMaxYear" class="form-label"> .</label> 
+            <input type="text" class="form-control" id="inputModel" placeholder="Max Price">
+          </div> 
+        </div>
+          <div class="d-grid gap-2 col-6 mx-auto mt-2">
+            <button class="btn btn-outline-warning" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+            </svg>Search</button>
+          </div>
+        </form>
+      </div>
+        <!-------------cards--------------------->
+        <div class="album py-5 bg-body-tertiary">
+            <div class="container">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <!------------------card 1--------------------->
+                <% cars.forEach(car => { %>
+                  <div class="col-md-3">
+                    <div class="card shadow-sm">
+                      <% if (locals.photo) { %>
+                        <img src="<%= car.photos[0][0].replace("/public", ""); %>" alt="<%= car.make %> <%= car.model %>" width="100%" height="225">
+                      <% } else { %>
+                        <img src="/assets/images/no-image.jpg" alt="No-Image" width="100%" height="225">
+                      <% } %>
+                      <div class="card-body">
+                        <div>
+                          <h4><%= car.make %> <%= car.model %></h4>
+                          <span class="badge bg-success ">Negotiable</span>
+                        </div>
+                        <h5 class="text-warning">Ksh. <%= car.price %></h5>
+                        <hr>
+                        <ul class="nav flex-column">
+                          <li class="text-body-secondary">Year: <b><%= car.yom %></b></li>
+                          <li class="text-body-secondary">Engine: <b><%= car.rating %></b></li>
+                          <li class="text-body-secondary">Transmission: <b><%= car.transmission %></b></li>
+                          <li class="text-body-secondary">Exterior color: <b><%= car.color %></b></li>
+                        </ul>
+                         <hr>
+                            <a class="btn btn-outline-warning btn-sm stretched-link" type="button" href="/detail/<%= car.id %>">More Details</a>
+                          </div>
+                    </div>
+                  </div> 
+                <% }); %>
+                <!----------------------Extra Card Go here-------------->
+              </div>
+            </div>
+          </div>
+      <!-------------------------------------------------Testimonials---------------------------------------------------->
+        <div class="p-5 text-center bg-white">
+          <div class="container py-3">
+              <h1 class="text-body-emphasis">Our Top Brands</h1>
+              <div class="container mt-5">
+              <div class="row">
+                <div class="col-lg-2 col-sm-12">
+                  <img src="./assets/logo/Mercedes_Benz.jpg" alt="mercedes-logo" height="100" >
+                </div>
+                <div class="col-lg-2 col-sm-12">
+                  <img src="./assets/logo/nissan-brand.jpg" alt="Nissan-logo" height="100" >
+                </div>
+                <div class="col-lg-2 col-sm-12">
+                  <img src="./assets/logo/toyota.png" alt="toyata-logo" height="100" >
+                </div>
+                <div class="col-lg-2 col-sm-12">
+                  <img src="./assets/logo/mazda.jpg" alt="mazda-logo" height="100">
+                </div>
+                <div class="col-lg-2 col-sm-12">
+                  <img src="./assets/logo/peugeot.jpg" alt="peugeot-logo" height="100">
+                </div>
+                <div class="col-lg-2 col-sm-12">
+                  <img src="./assets/logo/volkswagen_logo.jpg" alt="volkswagen_logo" height="100" >
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+    <!-----------------------------------------------cards---------------------------------------------->
+        <div class="album py-5 bg-body-tertiary">
+          <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+              <!----------------------Extra Card Go here-->
+            </div>
+          </div>
+        </div>
+<%- include("partials/footer") %>

@@ -1,0 +1,61 @@
+@keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+.admin{
+  margin-top: 0px;
+}
+
+.navbar-nav{
+    margin-left: auto;
+    font-size: 20px;
+    padding-right: 20px;
+    font-weight: 350;
+}
+.carousel{
+    margin-top: 110px;
+}
+.navbar-brand{
+    font-family: Cooper Black;
+    font-size: x-large;
+}
+.badge{
+  float:right;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+}
+.carousel-thumbnail {
+  cursor: pointer;
+  opacity: 0.5;
+}
+.carousel-thumbnail.active {
+  opacity: 1;
+}
+
+.view {
+  background-color: rgb(99, 165, 0);
+  color: rgb(255, 255, 255);
+}
+.edit {
+  background-color: royalblue;
+  color: rgb(255, 255, 255);
+}
+.delete {
+  background-color: rgb(204, 50, 50);
+  color: rgb(255, 255, 255);
+}
+.text-body-secondary {
+  font-size: 14px;
+}
+

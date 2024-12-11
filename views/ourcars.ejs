@@ -1,0 +1,45 @@
+<%- include("partials/head") %>
+<%- include("partials/adminHeader") %>
+
+<div class="container pt-5 py-5 mt-5">
+    <div class="row">
+        <% cars.forEach(car => { %>
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <% if (locals.photo) { %>
+                  <img src="<%= photo %>" alt="<%= car.make %> <%= car.model %>" width="100%" height="225">
+                <% } else { %>
+                  <img src="/assets/images/no-image.jpg" alt="No-Image" width="100%" height="225">
+                <% } %>
+              <div class="card-body">
+                  <div>
+                    <h4><%= car.make %> <%= car.model %></h4>
+                    <span class="badge bg-danger ">Sold Out</span>
+                  </div>
+                  <h5 class="text-warning">Ksh. <%= car.price %></h5>
+                  <hr>
+                  <ul class="nav flex-column">
+                    <li class="text-body-secondary">Year: <b><%= car.yom %></b></li>
+                    <li class="text-body-secondary">Engine: <b><%= car.rating %></b></li>
+                    <li class="text-body-secondary">Transmission: <b><%= car.transmission %></b></li>
+                    <li class="text-body-secondary">Exterior color: <b><%= car.color %></b></li>
+                  </ul>
+                  <hr>
+                  <div class="dropdown">
+                    <button class="btn btn-warning btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      Action
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item view" href="#">View</a></li>
+                      <li><a class="dropdown-item edit" href="ourcars/edit/<%= car.id %>">Edit</a></li>
+                      <li><a class="dropdown-item delete" href="#">Delete</a></li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+</div>
+
+<%- include("partials/footer") %>
