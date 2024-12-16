@@ -7,11 +7,9 @@ const router = express.Router();
 router.get("/",async (req, res) => {
     if (req.isAuthenticated()){
         try {
-            const carWithPhotos = await cars();
-            const photo = carWithPhotos[0].photos[0][0].replace("/public", "");
+            const carWithPhotos = await cars();           
             res.render("ourcars.ejs", {
-                cars: carWithPhotos, 
-                photo: photo
+                cars: carWithPhotos,    
             });
         } catch (error) {
             console.error(error);
@@ -50,5 +48,16 @@ router.post("/edit/:id",async (req, res) => {
         res.status(500).send({message: "Error Uploading Edited Car Details"})
     }
 });
+
+router.get("/delete/:id",async (req, res) => {
+    const id = parseInt(req.params.id);
+    try {
+        await db.query("DELETE FROM cars WHERE id = $1", [id]);
+        res.redirect("/ourcars");
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({message: "Error deleting car"})
+    }
+})
 
 export default router;
